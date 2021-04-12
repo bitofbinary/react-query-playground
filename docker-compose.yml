@@ -1,0 +1,11 @@
+version: '3'
+services:
+  server:
+    build:
+      context: ./server/
+    command: /usr/app/node_modules/.bin/nodemon index.ts
+    volumes:
+      - ./server/:/usr/app
+      - /usr/app/node_modules
+    ports:
+      - "8001:8001"
