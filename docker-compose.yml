@@ -9,3 +9,14 @@ services:
       - /usr/app/node_modules
     ports:
       - "8001:8001"
+  client:
+    build:
+      context: ./client/
+    command: yarn start
+    volumes:
+      - ./client/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - server
+    ports:
+      - "8000:8000"
