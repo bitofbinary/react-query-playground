@@ -2,13 +2,19 @@
   "name": "spa",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "PORT=8000 react-scripts start",
+    "build": "react-scripts build",
+    "lint": "eslint --max-warnings=0 --ext js,ts,tsx src",
+    "test": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage",
+    "pre-commit": "yarn run lint",
+    "pre-push": "CI=true yarn run test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
-    "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^13.1.2",
-    "@types/jest": "^26.0.22",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
@@ -21,11 +27,10 @@
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
-  "scripts": {
-    "start": "PORT=8000 react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^13.1.2"
   },
   "eslintConfig": {
     "extends": [
@@ -45,9 +50,14 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@testing-library/dom": "^7.30.3",
-    "jest": "^26.6.3",
-    "ts-jest": "^26.5.4"
+  "prettier": {
+    "semi": true,
+    "printWidth": 120
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run pre-commit",
+      "pre-push": "yarn run pre-push"
+    }
   }
 }

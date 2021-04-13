@@ -4,7 +4,7 @@ WORKDIR /usr/app
 
 COPY . .
 
-RUN npm i -qy
+RUN yarn
 
 EXPOSE 8001
 
